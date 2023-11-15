@@ -53,8 +53,8 @@ endif
 
 
 " For third-parties.  Not used by plugin.
-function! FindRootDirectory()
-  return s:root()
+function! FindRootDirectory(dir)
+  return s:root(dir)
 endfunction
 
 
@@ -123,12 +123,12 @@ endfunction
 
 
 " Returns the root directory or an empty string if no root directory found.
-function! s:root(d)
+function! s:root(...)
 
-  if !d
+  if !a:0
     let dir = s:current()
   else
-    let dir = a:d
+    let dir = a:1
   endif
 
   " breadth-first search
