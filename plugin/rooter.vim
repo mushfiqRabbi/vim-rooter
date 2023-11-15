@@ -123,8 +123,13 @@ endfunction
 
 
 " Returns the root directory or an empty string if no root directory found.
-function! s:root()
-  let dir = s:current()
+function! s:root(d)
+
+  if !d
+    let dir = s:current()
+  else
+    let dir = a:d
+  endif
 
   " breadth-first search
   while 1
@@ -254,6 +259,7 @@ endfunction
 function! s:toggle()
   if g:rooter_manual_only | Rooter | endif
   let g:rooter_manual_only = !g:rooter_manual_only
+  endif
 endfunction
 
 
