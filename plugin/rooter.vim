@@ -53,8 +53,12 @@ endif
 
 
 " For third-parties.  Not used by plugin.
-function! FindRootDirectory(dir)
-  return s:root(dir)
+function! FindRootDirectory(...)
+  if a:0
+    return s:root(a:1)
+  else
+    return s:root()
+  endif
 endfunction
 
 
